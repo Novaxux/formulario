@@ -1,0 +1,289 @@
+<!-- Un expediente clínico de una mascota es fundamental para llevar un registro completo y preciso de su salud. A continuación, te presento los campos esenciales que debería contener un formato de expediente clínico para mascotas:
+
+Datos de identificación:
+Nombre completo de la mascota.
+Especie (perro, gato, etc.).
+Raza.
+Edad o fecha de nacimiento.
+Color y marcas distintivas.
+Historia clínica:
+Antecedentes médicos y quirúrgicos.
+Vacunas y desparasitaciones anteriores.
+Medicamentos actuales y alergias.
+Exploración física:
+Observaciones sobre el estado general de la mascota.
+Signos vitales (frecuencia cardíaca, temperatura, etc.).
+Resultados de pruebas:
+Análisis de laboratorio (hemograma, perfil bioquímico, etc.).
+Estudios de imagen (radiografías, ecografías, etc.).
+Tratamiento y seguimiento:
+Medicamentos recetados y dosis.
+Indicaciones para el cuidado en casa.
+Notas y observaciones:
+Cualquier información relevante sobre el estado de salud de la mascota. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expediente Clínico de tu mascota</title>
+</head>
+<style>
+    article{
+        margin: 1rem;
+        display: flex;
+        justify-content: center;
+    }
+    body{
+        margin: 0px;
+        background-image: linear-gradient(to bottom, #c4d9f9, #aee8fe, #a9f5f2, #c1fdda, #edffc3); 
+    }
+    header{
+        display: flex;
+        justify-content: center;
+        margin-bottom: 5rem;
+        height: 6rem;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        color: white;   
+        background-color: rgb(0, 0, 0);
+    }
+    .form{
+        width: 400px;
+        padding: 20px;
+        background: #ffffff80;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    } 
+    .input-dato{
+        margin-top: 6px;
+        width: 300px;
+        border-radius: 5px;
+        border: black solid 1px;
+    }
+    .botones{
+        margin-top: 1rem;
+    }
+    .button{
+        border: none;
+        background-color: aquamarine;
+        border-radius: 5px;
+    }
+    .button:hover{
+        background-color: blue;
+        color: #fff;
+    }
+</style>
+<body>
+    <header>
+        <h1>Expediente Clinico de tu mascota</h1>
+
+    </header>
+    <div class="container">
+            <article>
+
+              <div class="form">
+                <h2>Datos de identificación</h2>
+                <br>
+                <label>Nombre completo de la mascota</label>
+                <br>
+                <input type="text" class="input-dato" id="nombre">
+                <br>
+                <label>Especie (perro, gato, etc.)</label>
+                <br>
+                <input type="text" class="input-dato" id="especie">
+                <br>
+                <label>Raza</label>
+                <br>
+                <input type="text" class="input-dato" id="raza">
+                <br>
+                <label>Edad</label>
+                <br>
+                <input type="text" class="input-dato" id="edad">
+                <br>
+                <label>Color o marcas distintivas</label>
+                <br>
+                <input type="text" class="input-dato" id="color">
+              </div>
+            </article>
+            <article>
+
+            <div class="form">
+                <h2>Historia clinica</h2>
+                <br>
+                <label>Antecedentes médicos y quirúrgicos</label>
+                <br>
+                <input type="text" class="input-dato" id="antecedentes">
+                <br>
+                <label>Vacunas y desparasitaciones anteriores</label>
+                <br>
+                <input type="text" class="input-dato" id="vacunas">
+                <br>
+                <label>Medicamentos actuales y alergias</label>
+                <br>
+                <input type="text" class="input-dato" id="medicamentos">
+            </div>
+            </article>
+            <article>
+
+                <div class="form">
+                    <h2>Exploracion fisica</h2>
+                    <br>
+                    <label>Observaciones sobre el estado general de la mascota</label>
+                    <br>
+                <input type="text" class="input-dato" id="observaciones">
+                <br>
+                <label>Signos vitales (frecuencia cardíaca, temperatura, etc.)</label>
+                <br>
+                <input type="text" class="input-dato" id="signosVitales">
+            </div>
+            </article>
+            <article>
+
+                    <div class="form">
+                        <h2>Resultados de pruebas</h2>
+                        <br>
+                        <label>Análisis de laboratorio (hemograma, perfil bioquímico, etc.)</label>
+                        <br>
+                    <input type="text" class="input-dato" id="analisis">
+                    <br>
+                    <label>Estudios de imagen (radiografías, ecografías, etc.)</label>
+                    <br>
+                    <input type="text" class="input-dato" id="estudios">
+                </div>
+            </article>
+            <article>
+
+                        <div class="form">
+                            <h2>Tratamiento y seguimiento</h2>
+                            <br>
+                            <label ><b> Medicamentos recetados y dosis</b></label>
+                        <br>
+                        <p id="receta"></p>
+                        <br>
+                        <label><b>Indicaciones para el cuidado en casa.</b></label>
+                        <br>
+                        <p id="indicaciones"></p>
+                    </div>
+            </article>
+            <article>
+                        <div class="form">
+                            <h2>Notas y observaciones</h2>
+                            <br>
+                            <label>Cualquier información relevante sobre el estado de salud de la mascota</label>
+                            <br>
+                            <!-- Aqui es para que el usuario escriba alguna observacion -->
+                            <input type="text" id="observacion" class="input-dato"> 
+                            <div class="botones">
+
+                                <button onclick=guardar() class="button">Guardar </button>
+                                <button onclick=cargar() class="button">Cargar </button>
+                                <button onclick=limpiar_campos() class="button">Limpiar campos</button>
+                                <button onclick=limpiar() class="button">Limpiar </button>     
+                            </div>
+                        </div>
+            </article>    
+    </div>
+    <script>
+        let nombre = document.getElementById("nombre");
+        let especie = document.getElementById("especie");
+        let raza = document.getElementById('raza')
+        let edad = document.getElementById('edad')
+        let color = document.getElementById('color')
+        
+        let antecedentes = document.getElementById('antecedentes')
+        let vacunas = document.getElementById('vacunas')
+        let medicamentos = document.getElementById('medicamentos')
+        
+        let observaciones = document.getElementById('observaciones')
+        let signosVitales = document.getElementById('signosVitales')
+        
+        let analisis = document.getElementById('analisis')
+        let estudios = document.getElementById('estudios')
+
+        let observacion = document.getElementById('observacion')
+
+
+
+         function guardar(){
+            alert ('Se han guardado los datos');
+            localStorage.setItem('nombre', nombre.value);
+            localStorage.setItem('especie', especie.value);
+            localStorage.setItem('raza', raza.value);
+            localStorage.setItem('edad', edad.value);
+            localStorage.setItem('color', color.value);
+            
+            localStorage.setItem('antecedentes', antecedentes.value);
+            localStorage.setItem('vacunas', vacunas.value);
+            localStorage.setItem('medicamentos', medicamentos.value);
+            
+            localStorage.setItem('observaciones', observaciones.value);
+            localStorage.setItem('signosVitales', signosVitales.value);
+            
+            localStorage.setItem('analisis', analisis.value);
+            localStorage.setItem('estudios', estudios.value);
+
+            localStorage.setItem('observacion', observacion.value);
+            limpiar_campos()
+            recetar();
+        }
+        function cargar(){
+            if(!!localStorage.getItem("nombre"))
+            {
+            nombre.value=localStorage.getItem('nombre')
+            especie.value=localStorage.getItem('especie')
+            raza.value=localStorage.getItem('raza')
+            edad.value=localStorage.getItem('edad')
+            color.value=localStorage.getItem('color')
+            
+            antecedentes.value=localStorage.getItem('antecedentes')
+            vacunas.value=localStorage.getItem('vacunas')
+            medicamentos.value=localStorage.getItem('medicamentos')
+            
+            observaciones.value=localStorage.getItem('observaciones')
+            signosVitales.value=localStorage.getItem('signosVitales')
+            
+            analisis.value=localStorage.getItem('analisis')
+            estudios.value=localStorage.getItem('estudios')
+            
+            observacion.value=localStorage.getItem('observacion')
+            }else
+            alert ('No hay datos almacenados');
+            
+        }
+        function limpiar_campos(){
+            nombre.value = '';
+            especie.value = '';
+            raza.value = '';
+            edad.value ='';
+            color.value ='';
+
+            antecedentes.value ='';
+            vacunas.value ='';
+            medicamentos.value ='';
+            
+            observaciones.value ='';
+            signosVitales.value ='';
+            
+            analisis.value ='';
+            estudios.value ='';
+            
+            observacion.value ='';
+        }
+        function limpiar() {  
+        alert("Ya quedaron limpios los datos!!")
+        document.getElementById('receta').innerHTML = ''
+        document.getElementById('indicaciones').innerHTML = ''
+        localStorage.clear();
+        
+    }
+    function recetar (){
+        document.getElementById('receta').innerHTML = 'Paracetamol cada ocho horas'
+        document.getElementById('indicaciones').innerHTML = 'No bañarlo, darle apio en las mañanas'
+    }
+    limpiarcampos();
+        
+    </script>
+</body>
+</html>
