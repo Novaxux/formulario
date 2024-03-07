@@ -63,15 +63,17 @@ Cualquier información relevante sobre el estado de salud de la mascota. -->
         border: black solid 1px;
     }
     .botones{
+        display: inline-flex;
         margin-top: 1rem;
     }
     .button{
-        border: none;
+        border: black;
         background-color: aquamarine;
-        border-radius: 5px;
+        height: 2.5rem;
+        margin: 3px;
     }
     .button:hover{
-        background-color: blue;
+        background-color: rgb(183, 0, 255);
         color: #fff;
     }
 </style>
@@ -186,6 +188,7 @@ Cualquier información relevante sobre el estado de salud de la mascota. -->
             </article>    
     </div>
     <script>
+        // guardamos los datos ingresados en una variable
         let nombre = document.getElementById("nombre");
         let especie = document.getElementById("especie");
         let raza = document.getElementById('raza')
@@ -207,7 +210,10 @@ Cualquier información relevante sobre el estado de salud de la mascota. -->
 
 
          function guardar(){
+            // mostramos un alert donde se le da a entender al usuario que se guardaron los datos
             alert ('Se han guardado los datos');
+
+            // guardamos los datos de las variables en un local storage con el nombre correspondiente
             localStorage.setItem('nombre', nombre.value);
             localStorage.setItem('especie', especie.value);
             localStorage.setItem('raza', raza.value);
@@ -225,7 +231,11 @@ Cualquier información relevante sobre el estado de salud de la mascota. -->
             localStorage.setItem('estudios', estudios.value);
 
             localStorage.setItem('observacion', observacion.value);
+
+            // limpio los campos cada que se guarda el archivo
             limpiar_campos()
+
+            // solo un ejemplo para cambiar el texto
             recetar();
         }
         function cargar(){
@@ -236,7 +246,7 @@ Cualquier información relevante sobre el estado de salud de la mascota. -->
             raza.value=localStorage.getItem('raza')
             edad.value=localStorage.getItem('edad')
             color.value=localStorage.getItem('color')
-            
+        
             antecedentes.value=localStorage.getItem('antecedentes')
             vacunas.value=localStorage.getItem('vacunas')
             medicamentos.value=localStorage.getItem('medicamentos')
