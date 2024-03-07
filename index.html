@@ -179,6 +179,7 @@ Cualquier información relevante sobre el estado de salud de la mascota. -->
                             <input type="text" id="observacion" class="input-dato"> 
                             <div class="botones">
 
+                                <!-- los botones llamaran las respectivas funciones -->
                                 <button onclick=guardar() class="button">Guardar </button>
                                 <button onclick=cargar() class="button">Cargar </button>
                                 <button onclick=limpiar_campos() class="button">Limpiar campos</button>
@@ -188,50 +189,36 @@ Cualquier información relevante sobre el estado de salud de la mascota. -->
             </article>    
     </div>
     <script>
-        // guardamos los datos ingresados en una variable
-        let nombre = document.getElementById("nombre");
-        let especie = document.getElementById("especie");
-        let raza = document.getElementById('raza')
-        let edad = document.getElementById('edad')
-        let color = document.getElementById('color')
+        /* hice dos variables para guardar en un arreglo los datos de las variables en las que se almacena la información de cada campo y los 
+        ids usando la misma posicion ambos, esto ma ayudará a no tener que declarar variables una y otra vez ahorrando campos y código
+        innecesario*/
+        let datosAlmacenados = ['nombre','especie','raza','edad','color','antecedentes','vacunas','medicamentos','observaciones','signosVitales','analisis','estudios','observacion']
+        let variablesAlmacenados = [nombre,especie,raza,edad,color,antecedentes,vacunas,medicamentos,observaciones,signosVitales,analisis,estudios,observacion]
         
-        let antecedentes = document.getElementById('antecedentes')
-        let vacunas = document.getElementById('vacunas')
-        let medicamentos = document.getElementById('medicamentos')
-        
-        let observaciones = document.getElementById('observaciones')
-        let signosVitales = document.getElementById('signosVitales')
-        
-        let analisis = document.getElementById('analisis')
-        let estudios = document.getElementById('estudios')
-
-        let observacion = document.getElementById('observacion')
-
-
+        // guardamos los datos ingresados en una variable con un ciclo para escanear las variables almacenadas
+        for (let i = 0; i<= datosAlmacenados.length-1;i++){
+            variablesAlmacenados[i]=document.getElementById(datosAlmacenados[i])
+            }
 
          function guardar(){
             // mostramos un alert donde se le da a entender al usuario que se guardaron los datos
-            alert ('Se han guardado los datos');
-
-            // guardamos los datos de las variables en un local storage con el nombre correspondiente
-            localStorage.setItem('nombre', nombre.value);
-            localStorage.setItem('especie', especie.value);
-            localStorage.setItem('raza', raza.value);
-            localStorage.setItem('edad', edad.value);
-            localStorage.setItem('color', color.value);
             
-            localStorage.setItem('antecedentes', antecedentes.value);
-            localStorage.setItem('vacunas', vacunas.value);
-            localStorage.setItem('medicamentos', medicamentos.value);
-            
-            localStorage.setItem('observaciones', observaciones.value);
-            localStorage.setItem('signosVitales', signosVitales.value);
-            
-            localStorage.setItem('analisis', analisis.value);
-            localStorage.setItem('estudios', estudios.value);
+            for (let i = 0; i<= datosAlmacenados.length-1;i++){
+                if (!!variablesAlmacenados[i].value){
+                    // iremos guardando la variable con el nombre correspondiente con el ciclo for
+                    localStorage.setItem(datosAlmacenados[i], variablesAlmacenados[i].value);
 
-            localStorage.setItem('observacion', observacion.value);
-
+                    // arrojar un alert de que los datos se guardaron correctamente cuando se llegué al límite del array
+                    if (i == datosAlmacenados.length-1){
+                        alert('Datos guardados correctamente');
+                    }
+                }else{
+                    /*arrojar un alert de que los datos no se guardaron borrando los datos que se iban almacenando en el ciclo anterior, 
+                    protegiendo así los datos almacenados obligando al usuario a ingresar todos los datos requeridos*/
+                    localStorage.clear();
+                    return alert ('Ingrese todos los datos')
+                }
+            }
             // limpio los campos cada que se guarda el archivo
             limpiar_campos()
 
@@ -239,60 +226,40 @@ Cualquier información relevante sobre el estado de salud de la mascota. -->
             recetar();
         }
         function cargar(){
-            if(!!localStorage.getItem("nombre"))
-            {
-            nombre.value=localStorage.getItem('nombre')
-            especie.value=localStorage.getItem('especie')
-            raza.value=localStorage.getItem('raza')
-            edad.value=localStorage.getItem('edad')
-            color.value=localStorage.getItem('color')
-        
-            antecedentes.value=localStorage.getItem('antecedentes')
-            vacunas.value=localStorage.getItem('vacunas')
-            medicamentos.value=localStorage.getItem('medicamentos')
-            
-            observaciones.value=localStorage.getItem('observaciones')
-            signosVitales.value=localStorage.getItem('signosVitales')
-            
-            analisis.value=localStorage.getItem('analisis')
-            estudios.value=localStorage.getItem('estudios')
-            
-            observacion.value=localStorage.getItem('observacion')
-            }else
-            alert ('No hay datos almacenados');
-            
+           /*  recorro el array sin importar cual sea de los dos ya que tienen la misma longitud, segun sea i me dará los datos almacenados
+             en la posición de i, en caso de que no se cumpla quiere decir que no hay datos almacenados la variable, por lo tanto no se mostrarán
+             y se mandará un alert de que no hay datos almacenados */
+            for (let i = 0; i<= datosAlmacenados.length-1;i++){
+                if (!!localStorage.getItem(datosAlmacenados[i]) ){
+            variablesAlmacenados[i].value=localStorage.getItem(datosAlmacenados[i])
+                }else{ 
+                    return alert ('No hay datos almacenados')
+                }
+        }
         }
         function limpiar_campos(){
-            nombre.value = '';
-            especie.value = '';
-            raza.value = '';
-            edad.value ='';
-            color.value ='';
-
-            antecedentes.value ='';
-            vacunas.value ='';
-            medicamentos.value ='';
-            
-            observaciones.value ='';
-            signosVitales.value ='';
-            
-            analisis.value ='';
-            estudios.value ='';
-            
-            observacion.value ='';
+            // limpiamos el valor de las variables recorriendo el array
+            for (let i = 0; i<= variablesAlmacenados.length-1;i++){
+            variablesAlmacenados[i].value = '';
+            }
         }
         function limpiar() {  
+        //mostramos un alert para informar al usuario
         alert("Ya quedaron limpios los datos!!")
+        //limpiamos el texto de ejemplo
         document.getElementById('receta').innerHTML = ''
         document.getElementById('indicaciones').innerHTML = ''
+        //limpiamos los datos de local storage
         localStorage.clear();
+        // limpio los campos
+        limpiar_campos();
         
     }
     function recetar (){
+        //la funcion de ejemplo para cambiar el texto en el html
         document.getElementById('receta').innerHTML = 'Paracetamol cada ocho horas'
         document.getElementById('indicaciones').innerHTML = 'No bañarlo, darle apio en las mañanas'
     }
-    limpiarcampos();
         
     </script>
 </body>
